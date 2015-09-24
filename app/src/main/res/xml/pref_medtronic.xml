@@ -1,0 +1,25 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <EditTextPreference
+        android:key="enlite_sensor_id"
+        android:title="@string/pref_title_sensor_id"
+        android:defaultValue="@string/pref_default_sensor_id"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:inputType="number"
+        android:maxLines="1" />
+
+    <!--
+    <CheckBoxPreference
+        android:key="notifications_new_message"
+        android:title="@string/pref_title_new_message_notifications"
+        android:defaultValue="true" />
+    <CheckBoxPreference
+        android:dependency="notifications_new_message"
+        android:key="notifications_new_message_vibrate"
+        android:title="@string/pref_title_vibrate"
+        android:defaultValue="true" />
+    -->
+
+</PreferenceScreen>
