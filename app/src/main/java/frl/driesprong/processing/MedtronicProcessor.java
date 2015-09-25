@@ -1,8 +1,12 @@
 package frl.driesprong.processing;
 
-import android.content.Intent;
-import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
+
+import org.apache.commons.collections4.queue.CircularFifoQueue;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 import frl.driesprong.decoding.packages.MedtronicReading;
 import frl.driesprong.decoding.packages.MeterReading;
@@ -13,12 +17,6 @@ import frl.driesprong.enlite.calibration.CalibrationPair;
 import frl.driesprong.enlite.calibration.LinearRegressionCalibration;
 import frl.driesprong.enlite.calibration.OnePointCalibration;
 import frl.driesprong.enlite.calibration.TwoPointCalibration;
-
-import org.apache.commons.collections4.queue.CircularFifoQueue;
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
 
 public class MedtronicProcessor {
     private static final String TAG = "MedtronicProcessor";
@@ -77,27 +75,31 @@ public class MedtronicProcessor {
             this.knownCalibrations.clear();
         } else if (packet instanceof MeterReading) {
             MeterReading glucoseReading = (MeterReading) packet;
+            
+        }
+    }
 
-            // Check if it is new material
-            if (!this.lastGlucoseReadings.contains(glucoseReading)) {
-                this.lastGlucoseReadings.add(glucoseReading);
+    public void processVingerTest(MeterReading glucoseReading ) {
 
-                // Look if the Meter value can be paired with a sensor value to create a calibration point
-                long secondsDifference = Long.MAX_VALUE;
-                double nearestSensorReading = 0;
+        // Check if it is new material
+        if (!this.lastGlucoseReadings.contains(glucoseReading)) {
+            this.lastGlucoseReadings.add(glucoseReading);
 
-                for (SensorMeasurement measurement : this.lastSensorReadings) {
-                    long diff = glucoseReading.createdDifference(measurement.getCreated());
-                    if (diff < secondsDifference) {
-                        secondsDifference = diff;
-                        nearestSensorReading = measurement.getIsig();
-                    }
+            // Look if the Meter value can be paired with a sensor value to create a calibration point
+            long secondsDifference = Long.MAX_VALUE;
+            double nearestSensorReading = 0;
+
+            for (SensorMeasurement measurement : this.lastSensorReadings) {
+                long diff = glucoseReading.createdDifference(measurement.getCreated());
+                if (diff < secondsDifference) {
+                    secondsDifference = diff;
+                    nearestSensorReading = measurement.getIsig();
                 }
+            }
 
-                // Check if they are close enough
-                if (secondsDifference < MedtronicReading.EXPIRATION_FOUR_MINUTES) {
-                    this.knownCalibrations.add(new CalibrationPair(nearestSensorReading, glucoseReading.getMgdl()));
-                }
+            // Check if they are close enough
+            if (secondsDifference < MedtronicReading.EXPIRATION_FOUR_MINUTES) {
+                this.knownCalibrations.add(new CalibrationPair(nearestSensorReading, glucoseReading.getMgdl()));
             }
         }
     }

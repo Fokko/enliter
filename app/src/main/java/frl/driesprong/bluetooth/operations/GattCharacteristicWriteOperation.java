@@ -4,12 +4,12 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.util.Log;
 
+import java.util.UUID;
+
 import frl.driesprong.HexDump;
 import frl.driesprong.bluetooth.CRC;
 import frl.driesprong.bluetooth.GattAttributes;
 import frl.driesprong.bluetooth.RileyLinkUtil;
-
-import java.util.UUID;
 
 public class GattCharacteristicWriteOperation extends GattOperation {
     private static final String TAG = "GattCharacteristicWriteOperation";

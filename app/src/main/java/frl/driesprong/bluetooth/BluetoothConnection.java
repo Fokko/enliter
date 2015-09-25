@@ -19,6 +19,11 @@ import android.os.AsyncTask;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentLinkedQueue;
+
 import frl.driesprong.Constants;
 import frl.driesprong.HexDump;
 import frl.driesprong.Intents;
@@ -31,11 +36,6 @@ import frl.driesprong.bluetooth.operations.GattSetNotificationOperation;
 import frl.driesprong.decoding.MedtronicDecoder;
 import frl.driesprong.decoding.packages.MedtronicReading;
 import frl.driesprong.enliter.MainActivity;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class BluetoothConnection {
     private static final String LS = System.getProperty("line.separator");

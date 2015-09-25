@@ -3,10 +3,10 @@ package frl.driesprong.bluetooth.operations;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattDescriptor;
 
+import java.util.UUID;
+
 import frl.driesprong.bluetooth.GattAttributes;
 import frl.driesprong.bluetooth.GattDescriptorReadCallback;
-
-import java.util.UUID;
 
 public class GattDescriptorReadOperation extends GattOperation {
     private static final String TAG = "GattDescriptorReadOperation";

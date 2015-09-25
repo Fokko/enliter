@@ -5,9 +5,9 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.util.Log;
 
-import frl.driesprong.bluetooth.GattAttributes;
-
 import java.util.UUID;
+
+import frl.driesprong.bluetooth.GattAttributes;
 
 public class GattSetNotificationOperation extends GattOperation {
     private static final String TAG = "GattSetNotificationOperation";

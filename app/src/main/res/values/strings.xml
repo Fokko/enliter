@@ -9,4 +9,10 @@
     <string name="pref_default_sensor_id">12345678</string>
     <string name="pref_title_nightscout_mqtt_url">MQTT URL</string>
     <string name="pref_default_mqtt_url">mqtt://driesprongen.frl:1883/entries/sgvs</string>
+    <string name="action_add_calibration">Manual calibration</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="dialog_manual_calibration">Add a manual calibration using a vinger test</string>
+    <string name="dialog_manual_calibration_title">Manual Calibration</string>
+    <string name="dialog_current_bg">Current BG</string>
 </resources>

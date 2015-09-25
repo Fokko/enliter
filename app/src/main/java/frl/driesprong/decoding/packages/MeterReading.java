@@ -2,14 +2,14 @@ package frl.driesprong.decoding.packages;
 
 import android.support.annotation.NonNull;
 
-import frl.driesprong.bluetooth.CRC;
-import frl.driesprong.decoding.GlucosUnitConversion;
-
 import java.nio.ByteBuffer;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Comparator;
 import java.util.TimeZone;
+
+import frl.driesprong.bluetooth.CRC;
+import frl.driesprong.decoding.GlucosUnitConversion;
 
 public class MeterReading extends MedtronicReading implements Comparator<MeterReading>, Comparable<MeterReading> {
     private static final String TAG = "MeterReading";

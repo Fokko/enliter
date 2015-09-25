@@ -1,12 +1,12 @@
 package frl.driesprong.decoding.packages;
 
-import frl.driesprong.bluetooth.CRC;
-
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import frl.driesprong.bluetooth.CRC;
 
 public class SensorReading extends MedtronicReading {
     public static final double SENSOR_CONVERSION_CONSTANT_VALUE = 160.72;
